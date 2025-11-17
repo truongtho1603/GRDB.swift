@@ -6,11 +6,15 @@ import PackageDescription
 
 var swiftSettings: [SwiftSetting] = [
     .define("SQLITE_ENABLE_FTS5"),
-    .define("SQLITE_HAS_CODEC"),
-    .define("GRDBCIPHER")
+//    .define("SQLITE_HAS_CODEC"),
+//    .define("GRDBCIPHER"),
+//    .define("GRDBCUSTOMSQLITE"),
+
 ]
 var cSettings: [CSetting] = []
-var dependencies: [PackageDescription.Package.Dependency] = []
+var dependencies: [PackageDescription.Package.Dependency] = [
+    .package(url: "https://github.com/sqlcipher/SQLCipher.swift.git", exact: "4.10.0"),
+]
 
 // Don't rely on those environment variables. They are ONLY testing conveniences:
 // $ SQLITE_ENABLE_PREUPDATE_HOOK=1 make test_SPM
